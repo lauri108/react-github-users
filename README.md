@@ -1,3 +1,9 @@
+# Flavio's JS Bootcamp module 21
+
+## Visualising GitHub Users using Axios in a React app
+
+Basic Hook, Components, useState
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
