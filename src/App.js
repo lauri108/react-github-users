@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./App.css";
 import Form from "./components/Form";
 import CardList from "./components/CardList";
+import PositionFetcher from "./components/PositionFetcher";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -15,6 +16,7 @@ function App() {
       </h1>
       <Form onSubmit={addNewCard} />
       <CardList cards={cards} />
+      <PositionFetcher />
     </div>
   );
 }
