@@ -8,8 +8,10 @@ export default class DragDropArea extends Component {
   };
   onDrop = (event) => {
     event.preventDefault();
-    // TODO: toggle background colour of container
     console.log("drop: ", event);
+    //console.log("datatransfer: ", event.dataTransfer);
+    console.log(JSON.stringify(event.dataTransfer.files[0].name));
+    // TODO: toggle background colour of container
   };
   onDragEnter = (event, message) => {
     event.preventDefault();
