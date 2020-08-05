@@ -3,29 +3,45 @@ import React, { Component } from "react";
 export default class DragDropArea extends Component {
   onDragOver = (event) => {
     event.preventDefault();
+    event.stopPropagation();
     // TODO: toggle background colour of container
-    //console.log("drag over: ", event);
   };
   onDrop = (event) => {
     event.preventDefault();
-    console.log("drop: ", event);
-    //console.log("datatransfer: ", event.dataTransfer);
-    console.log(JSON.stringify(event.dataTransfer.files[0].name));
-    // TODO: toggle background colour of container
+    event.stopPropagation();
+
+    let dt = event.dataTransfer;
+    let files = dt.files;
+
+    console.log(`Processing file ${JSON.stringify(files[0].name)}`);
+
+    this.handleFiles(files);
   };
   onDragEnter = (event, message) => {
     event.preventDefault();
-    console.log("drag enter: ", event);
-    console.log("message: ", message);
-    // for (item of event.dataTransfer.items) {
-    //   const theFile = item.getAsFile();
-    //   console.log("file: ", theFile);
-    // }
+    event.stopPropagation();
+  };
+  handleFiles = (files) => {
+    [...files].forEach(this.uploadFile);
+  };
+  uploadFile = (file) => {
+    let url = "http://localhost:6000/files";
+    let formData = new FormData();
 
-    // for (item of event.dataTransfer.items) {
-    //   const theFile = item.getAsFile();
-    //   console.log(`file: ${theFile}`);
-    // }
+    formData.append("file", file);
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then(() => {
+        /* Done. Inform the user */
+        console.log("done");
+      })
+      .catch(() => {
+        console.log("a problem with saving file.");
+        /* Error. Inform the user */
+      });
   };
   render() {
     return (
