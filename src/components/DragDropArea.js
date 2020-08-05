@@ -24,6 +24,12 @@ export default class DragDropArea extends Component {
   handleFiles = (files) => {
     [...files].forEach(this.uploadFile);
   };
+  processUploadResult = (result) => {
+    console.log(`upload success, here's the data: `, result);
+  };
+  processUploadError = (error) => {
+    console.log(`upload error, here's the data: `, error);
+  };
   uploadFile = (file) => {
     let url = "http://localhost:6000/files";
     let formData = new FormData();
@@ -34,12 +40,12 @@ export default class DragDropArea extends Component {
       method: "POST",
       body: formData,
     })
-      .then(() => {
+      .then((result) => {
         /* Done. Inform the user */
-        console.log("done");
+        this.processUploadResult(result);
       })
-      .catch(() => {
-        console.log("a problem with saving file.");
+      .catch((error) => {
+        this.processUploadError(error);
         /* Error. Inform the user */
       });
   };
