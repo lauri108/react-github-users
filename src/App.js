@@ -3,6 +3,7 @@ import "./App.css";
 import Form from "./components/Form";
 import CardList from "./components/CardList";
 import PositionFetcher from "./components/PositionFetcher";
+import DragDropArea from "./components/DragDropArea";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -17,6 +18,8 @@ function App() {
       <Form onSubmit={addNewCard} />
       <CardList cards={cards} />
       <PositionFetcher />
+
+      <DragDropArea />
     </div>
   );
 }
