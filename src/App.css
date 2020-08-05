@@ -1,8 +1,12 @@
+.droppable {
+    min-height: 350px;
+}
+
 #dropArea {
     width: 700px;
     height: 350px;
     background: #61dafb;
-    border: 1px solid #8b8b8b;
+    /* border: 1px solid #8b8b8b; */
 }
 
 .App {

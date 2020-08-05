@@ -5,6 +5,7 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
 
 const useStyles = makeStyles({
   root: {
@@ -86,27 +87,27 @@ export default class DragDropArea extends Component {
   render() {
     return (
       <div>
-        <Card className="ui-test">
-          <CardContent>
-            <div
+        <Container maxWidth="sm">
+          <Card className="ui-test">
+            <CardContent
               className="droppable w-full max-w-sm mx-auto pt-10 text-center mt-6 text-3xl leading-9 font-extrabold text-gray-900"
-              id="dropArea"
+              //   id="dropArea"
               onDragOver={(e) => this.onDragOver(e)}
               onDragEnter={(e) => this.onDragEnter(e, "complete")}
               onDrop={(e) => this.onDrop(e, "complete")}
             >
               {" "}
               Drop here
-            </div>
-          </CardContent>
-        </Card>
-        {this.state.CSVResults.map((item) => (
-          <Card className="ui-test">
-            <CardContent>
-              name: {item.name}, qty: {item.quantity}
             </CardContent>
           </Card>
-        ))}
+          {this.state.CSVResults.map((item) => (
+            <Card className="ui-test" variant="outlined">
+              <CardContent>
+                name: {item.name}, qty: {item.quantity}
+              </CardContent>
+            </Card>
+          ))}
+        </Container>
       </div>
     );
   }
