@@ -19,6 +19,9 @@ function App() {
       <CardList cards={cards} />
       <PositionFetcher />
 
+      <h1 className="pt-10 text-center mt-6 text-3xl leading-9 font-extrabold text-gray-900">
+        Upload your CSV
+      </h1>
       <DragDropArea />
     </div>
   );

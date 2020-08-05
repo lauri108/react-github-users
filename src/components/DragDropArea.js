@@ -31,10 +31,10 @@ export default class DragDropArea extends Component {
     console.log(`upload error, here's the data: `, error);
   };
   uploadFile = (file) => {
-    let url = "http://localhost:6000/files";
+    const url = "http://localhost:8000/api/import";
     let formData = new FormData();
 
-    formData.append("file", file);
+    formData.append("name_of_file_here", file);
 
     fetch(url, {
       method: "POST",
@@ -45,8 +45,8 @@ export default class DragDropArea extends Component {
         this.processUploadResult(result);
       })
       .catch((error) => {
-        this.processUploadError(error);
         /* Error. Inform the user */
+        this.processUploadError(error);
       });
   };
   render() {
